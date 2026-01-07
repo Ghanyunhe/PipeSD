@@ -1,0 +1,35 @@
+# Cloud Service Configuration
+
+# Service settings
+service:
+  name: "cloud-service"
+  version: "1.0.0"
+  port: 443
+
+# Database settings
+database:
+  host: "db.pipesd.example.com"
+  port: 5432
+  name: "pipesd"
+  pool_size: 10
+
+# API settings
+api:
+  rate_limit: 1000
+  timeout: 60
+  cors_enabled: true
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "json"
+  file: "/var/log/cloud/service.log"
+
+# Cloud provider settings
+cloud:
+  provider: "aws"
+  region: "us-east-1"
+  availability_zones:
+    - "us-east-1a"
+    - "us-east-1b"
+    - "us-east-1c"

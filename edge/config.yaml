@@ -1,0 +1,28 @@
+# Edge Service Configuration
+
+# Service settings
+service:
+  name: "edge-service"
+  version: "1.0.0"
+  port: 8080
+
+# Connection settings
+connection:
+  cloud_endpoint: "https://cloud.pipesd.example.com"
+  timeout: 30
+  retry_attempts: 3
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "json"
+  file: "/var/log/edge/service.log"
+
+# Device settings
+device:
+  id: "edge-device-001"
+  location: "edge-01"
+  capabilities:
+    - "data-processing"
+    - "local-storage"
+    - "real-time-analytics"
