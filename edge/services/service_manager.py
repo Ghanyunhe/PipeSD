@@ -17,9 +17,17 @@ class EdgeServiceManager:
     def start_service(self, service_name):
         """Start a registered edge service."""
         if service_name in self.services:
-            self.services[service_name].start()
+            service = self.services[service_name]
+            if hasattr(service, 'start') and callable(service.start):
+                service.start()
+            else:
+                raise AttributeError(f"Service {service_name} does not have a start method")
             
     def stop_service(self, service_name):
         """Stop a running edge service."""
         if service_name in self.services:
-            self.services[service_name].stop()
+            service = self.services[service_name]
+            if hasattr(service, 'stop') and callable(service.stop):
+                service.stop()
+            else:
+                raise AttributeError(f"Service {service_name} does not have a stop method")

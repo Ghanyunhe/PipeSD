@@ -20,7 +20,22 @@ def validate_config(config: dict) -> bool:
     return all(key in config for key in required_keys)
 
 def format_response(data: Any, status: str = "success") -> Dict[str, Any]:
-    """Format API response."""
+    """Format API response.
+    
+    Args:
+        data: The response data
+        status: Response status (default: "success")
+        
+    Returns:
+        Formatted response dictionary
+        
+    Raises:
+        ValueError: If status is not a valid value
+    """
+    valid_statuses = {"success", "error", "pending", "warning"}
+    if status not in valid_statuses:
+        raise ValueError(f"Invalid status '{status}'. Must be one of {valid_statuses}")
+    
     return {
         "status": status,
         "data": data
